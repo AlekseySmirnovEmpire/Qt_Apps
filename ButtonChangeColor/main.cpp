@@ -1,4 +1,3 @@
-#include <iostream>
 #include <QApplication>
 #include <QSlider>
 #include <QPixmap>
@@ -21,7 +20,7 @@ public slots:
 public:
     MyPicture() = default;
     MyPicture(QWidget* parent);
-    void paintIvent(QPaintEvent* e);
+    void paintEvent(QPaintEvent* e);
     QSize sizeHint() const override;
     QSize minimumSizeHint() const override;
 };
@@ -31,9 +30,9 @@ MyPicture::MyPicture(QWidget* parent)
     setParent(parent);
     setToolTip("button");
     setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-    yellowButton = QPixmap("UI_Buttons/yellowButton.png");
-    greenButton = QPixmap("UI_Buttons/greenButton.png");
-    redButton = QPixmap("UI_Buttons/redButton.png");
+    yellowButton = QPixmap("../UI_Buttons/yellowButton.png");
+    greenButton = QPixmap("../UI_Buttons/greenButton.png");
+    redButton = QPixmap("../UI_Buttons/redButton.png");
     currentButton = greenButton;
     setGeometry(currentButton.rect());
 }
@@ -48,7 +47,7 @@ QSize MyPicture::minimumSizeHint() const
     return sizeHint();
 }
 
-void MyPicture::paintIvent(QPaintEvent* e)
+void MyPicture::paintEvent(QPaintEvent* e)
 {
     QPainter p(this);
     p.drawPixmap(e->rect(), currentButton);
